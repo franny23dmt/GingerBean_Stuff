@@ -1,5 +1,6 @@
-assert(getprop("ro.product.device") == "u8160" || getprop("ro.build.product") == "u8160" || getprop("ro.product.board") == "u8160" || 
-       getprop("ro.product.device") == "hwu8160" || getprop("ro.build.product") == "hwu8160" || getprop("ro.product.board") == "hwu8160");
+assert(getprop("ro.product.device") == "u8150" || getprop("ro.build.product") == "u8150" || getprop("ro.product.board") == "u8150" || 
+       getprop("ro.product.device") == "ideos" || getprop("ro.build.product") == "ideos" || getprop("ro.product.board") == "ideos" || 
+       getprop("ro.product.device") == "U8150" || getprop("ro.build.product") == "U8150" || getprop("ro.product.board") == "U8150");
 package_extract_file("system/bin/backuptool.sh", "/tmp/backuptool.sh");
 set_perm(0, 0, 0777, "/tmp/backuptool.sh");
 run_program("/tmp/backuptool.sh", "backup");
@@ -108,7 +109,6 @@ set_perm(0, 2000, 06750, "/system/bin/run-as");
 set_perm(1000, 1003, 02755, "/system/bin/screenshot");
 set_perm_recursive(1002, 1002, 0755, 0440, "/system/etc/bluetooth");
 set_perm(0, 0, 0755, "/system/etc/bluetooth");
-set_perm(0, 0, 0644, "/system/etc/bluetooth/BCM4329.hcd");
 set_perm(1000, 1000, 0640, "/system/etc/bluetooth/auto_pairing.conf");
 set_perm(3002, 3002, 0444, "/system/etc/bluetooth/blacklist.conf");
 set_perm(1002, 1002, 0440, "/system/etc/dbus.conf");
