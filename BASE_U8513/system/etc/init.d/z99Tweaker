@@ -1,0 +1,41 @@
+#!/system/bin/sh
+# 
+# GingerBean Tweaker by Alberto96
+#
+
+echo "noop" > /sys/block/mmcblk0/queue/scheduler;
+echo 0 > /sys/block/mmcblk0/queue/rotational;
+
+for i in 1 2 3 4 5 6 7 8;
+do
+	echo "noop" > /sys/block/mtdblock$i/queue/scheduler;
+	echo 0 > /sys/block/mtdblock$i/queue/rotational;
+done
+
+if [ -e /sys/devices/virtual/bdi/179:0/read_ahead_kb ];
+then
+    /system/xbin/echo "1024" > /sys/devices/virtual/bdi/179:0/read_ahead_kb;
+fi
+
+echo 633600 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+echo 245760 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+
+if [ -e /sys/devices/system/cpu/cpu0/cpufreq/ondemand/up_threshold ]; then
+
+  echo "70" > /sys/devices/system/cpu/cpu0/cpufreq/ondemand/up_threshold;
+  echo "50000" > /sys/devices/system/cpu/cpu0/cpufreq/ondemand/sampling_rate;
+  echo "2" > /sys/devices/system/cpu/cpu0/cpufreq/ondemand/sampling_down_factor;
+  echo "15" > /sys/devices/system/cpu/cpu0/cpufreq/ondemand/down_differential;
+  echo "50" > /sys/devices/system/cpu/cpu0/cpufreq/ondemand/freq_step;
+
+fi;
+
+if [ -e /sys/devices/system/cpu/cpufreq/ondemand/up_threshold ]; then
+
+  echo "70" > /sys/devices/system/cpu/cpufreq/ondemand/up_threshold;
+  echo "50000" > /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate;
+  echo "2" > /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor;
+  echo "15" > /sys/devices/system/cpu/cpufreq/ondemand/down_differential;
+  echo "50" > /sys/devices/system/cpu/cpufreq/ondemand/freq_step;
+
+fi;
