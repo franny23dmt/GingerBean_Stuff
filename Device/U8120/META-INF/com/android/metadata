@@ -1,0 +1,3 @@
+post-build=google/soju/crespo:2.3.7/GWK74/185293:user/release-keys
+post-timestamp=0
+pre-device=u8120
